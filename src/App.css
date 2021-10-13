@@ -36,6 +36,7 @@
   width: 70px;
   height: 70px;
   background-color: #ffd900;
+  color: white;
   border-radius: 100%;
 }
 
@@ -43,6 +44,7 @@
   width: 70px;
   height: 70px;
   background-color: red;
+  color: white;
   border-radius: 100%;
 }
 
@@ -50,6 +52,7 @@
   width: 70px;
   height: 70px;
   background-color: blue;
+  color: white;
   border-radius: 100%;
 }
 
