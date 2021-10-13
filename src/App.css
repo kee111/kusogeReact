@@ -12,11 +12,22 @@
           align-items: center;
 }
 
-.teki_area .teki {
+.teki_area .super_gorira_wrapper {
   width: 100px;
   height: 100px;
   background-color: #7d0000;
   border-radius: 100%;
+  position: relative;
+  color: white;
+}
+
+.teki_area .super_gorira_wrapper .status {
+  position: absolute;
+  top: 120px;
+}
+
+.teki_area .super_gorira_wrapper .status .name {
+  color: #b80202;
 }
 
 .mikata_area {
@@ -32,28 +43,58 @@
           align-items: center;
 }
 
-.mikata_area .hyper_yellow {
+.mikata_area .hyper_yellow_wrapper {
   width: 70px;
   height: 70px;
   background-color: #ffd900;
   color: white;
   border-radius: 100%;
+  position: relative;
 }
 
-.mikata_area .fire_red {
+.mikata_area .hyper_yellow_wrapper .status {
+  position: absolute;
+  top: 80px;
+}
+
+.mikata_area .hyper_yellow_wrapper .status .name {
+  color: yellow;
+}
+
+.mikata_area .fire_red_wrapper {
   width: 70px;
   height: 70px;
   background-color: red;
   color: white;
   border-radius: 100%;
+  position: relative;
 }
 
-.mikata_area .speed_blue {
+.mikata_area .fire_red_wrapper .status {
+  position: absolute;
+  top: 80px;
+}
+
+.mikata_area .fire_red_wrapper .status .name {
+  color: red;
+}
+
+.mikata_area .speed_blue_wrapper {
   width: 70px;
   height: 70px;
-  background-color: blue;
+  background-color: #0008ff;
   color: white;
   border-radius: 100%;
+  position: relative;
+}
+
+.mikata_area .speed_blue_wrapper .status {
+  position: absolute;
+  top: 80px;
+}
+
+.mikata_area .speed_blue_wrapper .status .name {
+  color: blue;
 }
 
 .command_area {
