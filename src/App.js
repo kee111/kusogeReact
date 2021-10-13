@@ -3,8 +3,16 @@ import "./App.css";
 
 function App() {
     return (
-        <div>
-            <p className="hello">Hello React.</p>
+        <div className="wapper">
+            <div className="teki_area">
+                <div className="teki"></div>
+            </div>
+            <div className="mikata_area">
+                <div className="hyper_yellow"></div>
+                <div className="fire_red"></div>
+                <div className="speed_blue"></div>
+            </div>
+            <div className="command_area">command_area</div>
         </div>
     );
 }

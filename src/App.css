@@ -1,4 +1,61 @@
-p {
-  color: red;
+.teki_area {
+  height: 300px;
+  background-color: #614343;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.teki_area .teki {
+  width: 100px;
+  height: 100px;
+  background-color: #7d0000;
+  border-radius: 100%;
+}
+
+.mikata_area {
+  height: 300px;
+  background-color: #025b05;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.mikata_area .hyper_yellow {
+  width: 70px;
+  height: 70px;
+  background-color: #ffd900;
+  border-radius: 100%;
+}
+
+.mikata_area .fire_red {
+  width: 70px;
+  height: 70px;
+  background-color: red;
+  border-radius: 100%;
+}
+
+.mikata_area .speed_blue {
+  width: 70px;
+  height: 70px;
+  background-color: blue;
+  border-radius: 100%;
+}
+
+.command_area {
+  height: 200px;
+  color: white;
+  background-color: black;
 }
 /*# sourceMappingURL=App.css.map */
