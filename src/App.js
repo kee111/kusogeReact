@@ -3,7 +3,7 @@ import "./App.scss";
 import Fighter from "./components/ Fighter";
 import Teki from "./components/Teki";
 import Header from "./components/Header";
-import Command_area from "./components/Command_area";
+import Command from "./components/Command";
 
 // 関数たち
 const functions = {
@@ -52,7 +52,7 @@ function App() {
             <Header />
             <div className="teki_area">{teki_list}</div>
             <div className="mikata_area">{fighter_list}</div>
-            <Command_area />
+            <Command />
         </div>
     );
 }
