@@ -26,9 +26,9 @@ function App() {
     // ファイターとゴリラの情報
     const [teki, setTeki] = useState({ name: "super_gorira", hp: 3000 });
     const [fighter, setFighter] = useState([
-        { name: "hyper_yellow", hp: 200, mp: 100, attack: -30 },
-        { name: "fire_red", hp: 200, mp: 100, attack: -60 },
-        { name: "speed_blue", hp: 200, mp: 100, attack: -40 },
+        { name: "hyper_yellow", hp: 200, mp: 100, attack: -30, heal: +60 },
+        { name: "fire_red", hp: 200, mp: 100, attack: -60, heal: +10 },
+        { name: "speed_blue", hp: 200, mp: 100, attack: -40, heal: +40 },
     ]);
 
     // 変数にコンポーネントをまとめた
