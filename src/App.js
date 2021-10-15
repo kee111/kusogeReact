@@ -15,6 +15,10 @@ const functions = {
             return fighter;
         });
     },
+    changeHP_teki: (newTeki, hp) => {
+        newTeki.hp = newTeki.hp + hp;
+        return newTeki;
+    },
 };
 
 // main
@@ -22,18 +26,10 @@ function App() {
     // ファイターとゴリラの情報
     const [teki, setTeki] = useState({ name: "super_gorira", hp: 3000 });
     const [fighter, setFighter] = useState([
-        { name: "hyper_yellow", hp: 200, mp: 100 },
-        { name: "fire_red", hp: 200, mp: 100 },
-        { name: "speed_blue", hp: 200, mp: 100 },
+        { name: "hyper_yellow", hp: 200, mp: 100, attack: -30 },
+        { name: "fire_red", hp: 200, mp: 100, attack: -60 },
+        { name: "speed_blue", hp: 200, mp: 100, attack: -40 },
     ]);
-    // コマンドエリアの情報
-    // const [command, setCommand] = useState("|");
-
-    // ファイターのhpを操作するサンプルコード
-    const newFigher = Object.assign([], fighter);
-    useEffect(() => {
-        setFighter(functions.changeHP_fighter(newFigher, "fire_red", 5000));
-    }, []);
 
     // 変数にコンポーネントをまとめた
     const fighter_list = fighter.map((fighter, index) => (
@@ -52,7 +48,13 @@ function App() {
             <Header />
             <div className="teki_area">{teki_list}</div>
             <div className="mikata_area">{fighter_list}</div>
-            <Command />
+            <Command
+                functions={functions}
+                fighter={fighter}
+                setFighter={setFighter}
+                teki={teki}
+                setTeki={setTeki}
+            />
         </div>
     );
 }
