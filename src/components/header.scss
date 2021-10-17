@@ -2,7 +2,9 @@
     position: fixed;
     margin: 30px;
     color: white;
-    background-color: rgba(0, 0, 0, 0.386);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(30px);
     padding: 20px;
     border-radius: 16px;
+    border: solid 0.01px rgba(255,255,255, 0.9);
 }

@@ -7,7 +7,7 @@ import Command from "./components/Command";
 
 // 関数たち
 const functions = {
-    changeHP_fighter: (newFigher, fighterName, hp) => {
+    change_Status_fighter: (newFigher, fighterName, hp) => {
         return newFigher.map((fighter) => {
             if (fighterName == fighter.name) {
                 fighter.hp = fighter.hp + hp;
@@ -15,6 +15,7 @@ const functions = {
             return fighter;
         });
     },
+
     changeHP_teki: (newTeki, hp) => {
         newTeki.hp = newTeki.hp + hp;
         return newTeki;
