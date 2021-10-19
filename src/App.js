@@ -7,7 +7,7 @@ import Command from "./components/Command";
 
 // 関数たち
 const functions = {
-    // 第二引数に入った名前のファイターのステータスを変更する。
+    // ファイターのステータスを変更。第二引数に入ったファイターが変更
     change_Status_fighter: (newFigher, fighterName, hp, mp) => {
         return newFigher.map((fighter) => {
             if (fighterName == fighter.name) {
@@ -18,6 +18,7 @@ const functions = {
         });
     },
 
+    // 敵のHPを変更。
     changeHP_teki: (newTeki, hp) => {
         newTeki.hp = newTeki.hp + hp;
         return newTeki;
@@ -34,7 +35,7 @@ function App() {
         { name: "speed_blue", hp: 200, mp: 100, attack: -40, heal: +40 },
     ]);
 
-    // 変数にコンポーネントをまとめた
+    // ファイターコンポーネント
     const fighter_list = fighter.map((fighter, index) => (
         <Fighter
             key={index}
@@ -43,6 +44,8 @@ function App() {
             mp={fighter.mp}
         />
     ));
+
+    // 敵ゴリラコンポーネント
     const teki_list = <Teki key={0} name={teki.name} hp={teki.hp} />;
 
     // JSX

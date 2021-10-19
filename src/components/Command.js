@@ -17,7 +17,7 @@ function heal_fighter(functions, command, fighter, setFighter) {
     for (let i = 0; i < fighter.length; i++) {
         // もし、第二引数(指定のファイター)がなければ
         if (command[0] == fighter[i].name && command[2] == undefined) {
-            console.log(command[2]);
+            // 自分自身を回復
             setFighter(
                 functions.change_Status_fighter(
                     newFighter,
@@ -45,6 +45,7 @@ function heal_fighter(functions, command, fighter, setFighter) {
     }
 }
 
+// main
 export default function Command_area({
     functions,
     fighter,
@@ -54,10 +55,12 @@ export default function Command_area({
 }) {
     const [textArea, setTextArea] = useState("");
 
+    // text入力を監視
     function handleChange(e) {
         setTextArea(e.target.value);
     }
 
+    // コマンド打ち込んだ時の処理
     const handleKeyDown = (event) => {
         // enterを判定
         if (event.key === "Enter") {
@@ -75,6 +78,7 @@ export default function Command_area({
         }
     };
 
+    // JSX
     return (
         <div className="command_wrapper">
             <div className="command_area">
