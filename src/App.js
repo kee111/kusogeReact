@@ -7,10 +7,12 @@ import Command from "./components/Command";
 
 // 関数たち
 const functions = {
-    change_Status_fighter: (newFigher, fighterName, hp) => {
+    // 第二引数に入った名前のファイターのステータスを変更する。
+    change_Status_fighter: (newFigher, fighterName, hp, mp) => {
         return newFigher.map((fighter) => {
             if (fighterName == fighter.name) {
                 fighter.hp = fighter.hp + hp;
+                fighter.mp = fighter.mp + mp;
             }
             return fighter;
         });

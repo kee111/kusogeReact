@@ -1,6 +1,7 @@
 import "./command.scss";
 import React, { useEffect, useState } from "react";
 
+// ゴリラを攻撃する関数
 function attack_fighter(functions, command, fighter, teki, setTeki) {
     const newTeki = Object.assign([], teki);
     for (let i = 0; i < fighter.length; i++) {
@@ -10,25 +11,35 @@ function attack_fighter(functions, command, fighter, teki, setTeki) {
     }
 }
 
+// ファイターを回復する関数
 function heal_fighter(functions, command, fighter, setFighter) {
     const newFighter = Object.assign([], fighter);
     for (let i = 0; i < fighter.length; i++) {
-        if (command[0] == fighter[i].name && command[2] != undefined) {
-            // console.log(command[2]);
+        // もし、第二引数(指定のファイター)がなければ
+        if (command[0] == fighter[i].name && command[2] == undefined) {
+            console.log(command[2]);
+            setFighter(
+                functions.change_Status_fighter(
+                    newFighter,
+                    command[0],
+                    fighter[i].heal,
+                    -20
+                )
+            );
+            // もし、第二引数(指定のファイター)があれば
+        } else if (command[0] == fighter[i].name && command[2] != undefined) {
+            // 回復されるファイター
             setFighter(
                 functions.change_Status_fighter(
                     newFighter,
                     command[2],
-                    fighter[i].heal
+                    fighter[i].heal,
+                    0
                 )
             );
-        } else if (command[0] == fighter[i].name) {
+            // 回復をしてあげるファイター
             setFighter(
-                functions.change_Status_fighter(
-                    newFighter,
-                    fighter[i].name,
-                    fighter[i].heal
-                )
+                functions.change_Status_fighter(newFighter, command[0], 0, -20)
             );
         }
     }
