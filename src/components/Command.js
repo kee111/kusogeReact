@@ -70,7 +70,6 @@ export default function Command_area({
 }) {
     const [textArea, setTextArea] = useState("");
 
-  
     // text入力を監視
     function handleChange(e) {
         setTextArea(e.target.value);
@@ -82,8 +81,7 @@ export default function Command_area({
         if (event.key === "Enter") {
             const command = textArea.split(" ");
 
-            // 行動させるファイターのターンを確認
-
+            // 行動させるファイターのターンを確認ここがむずい
             console.log(functions.judge_turn_fighter(command[0], fighter));
 
             if (command[1] == "attack") {

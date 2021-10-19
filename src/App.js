@@ -27,9 +27,10 @@ const functions = {
         });
     },
 
+    // ターンを判定すル関数（途中
     judge_turn_fighter: (fighterName, fighter) => {
 
-        
+
         if (fighterName == fighter.name) {
             return true;
         }
