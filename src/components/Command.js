@@ -2,11 +2,23 @@ import "./command.scss";
 import React, { useEffect, useState } from "react";
 
 // ゴリラを攻撃する関数
-function attack_fighter(functions, command, fighter, teki, setTeki) {
+function attack_fighter(
+    functions,
+    command,
+    fighter,
+    setFighter,
+    teki,
+    setTeki
+) {
     const newTeki = Object.assign([], teki);
+    const newFighter = Object.assign([], fighter);
     for (let i = 0; i < fighter.length; i++) {
         if (command[0] == fighter[i].name) {
-            setTeki(functions.changeHP_teki(newTeki, fighter[i].attack));
+            setTeki(functions.change_Status_teki(newTeki, fighter[i].attack));
+            // 行動したファイターのターンを終了
+            setFighter(
+                functions.change_turn_fighter(newFighter, command[0], false)
+            );
         }
     }
 }
@@ -24,8 +36,11 @@ function heal_fighter(functions, command, fighter, setFighter) {
                     command[0],
                     fighter[i].heal,
                     -20
-                )
+                ),
+                // 行動したファイターのターンを終了
+                functions.change_turn_fighter(newFighter, command[0], false)
             );
+
             // もし、第二引数(指定のファイター)があれば
         } else if (command[0] == fighter[i].name && command[2] != undefined) {
             // 回復されるファイター
@@ -35,11 +50,11 @@ function heal_fighter(functions, command, fighter, setFighter) {
                     command[2],
                     fighter[i].heal,
                     0
-                )
-            );
-            // 回復をしてあげるファイター
-            setFighter(
-                functions.change_Status_fighter(newFighter, command[0], 0, -20)
+                ),
+                // 回復をしてあげるファイター
+                functions.change_Status_fighter(newFighter, command[0], 0, -20),
+                // 行動したファイターのターンを終了
+                functions.change_turn_fighter(newFighter, command[0], false)
             );
         }
     }
@@ -55,6 +70,14 @@ export default function Command_area({
 }) {
     const [textArea, setTextArea] = useState("");
 
+    // // ファイターたちのターン管理 trueで待機状態
+    // const [yellow_turn, setYellow_turn] = useState(fighter[0].turn);
+    // const [red_turn, setRed_turn] = useState(fighter[1].turn);
+    // const [blue_turn, setBlue_turn] = useState(fighter[2].turn);
+
+    // 敵のターン管理 trueで待機状態
+    // const [teki_turn, setTeki_turn] = useState(teki.turn);
+
     // text入力を監視
     function handleChange(e) {
         setTextArea(e.target.value);
@@ -68,7 +91,14 @@ export default function Command_area({
 
             // もしアタックコマンドが呼び出されたら
             if (command[1] == "attack") {
-                attack_fighter(functions, command, fighter, teki, setTeki);
+                attack_fighter(
+                    functions,
+                    command,
+                    fighter,
+                    setFighter,
+                    teki,
+                    setTeki
+                );
             }
             // もし、ヒールが呼び出されたら
             if (command[1] == "heal") {

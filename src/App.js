@@ -17,9 +17,17 @@ const functions = {
             return fighter;
         });
     },
+    change_turn_fighter: (newFigher, fighterName, turn) => {
+        return newFigher.map((fighter) => {
+            if (fighterName == fighter.name) {
+                fighter.turn = turn;
+            }
+            return fighter;
+        });
+    },
 
     // 敵のHPを変更。
-    changeHP_teki: (newTeki, hp) => {
+    change_Status_teki: (newTeki, hp) => {
         newTeki.hp = newTeki.hp + hp;
         return newTeki;
     },
@@ -27,12 +35,39 @@ const functions = {
 
 // main
 function App() {
-    // ファイターとゴリラの情報
-    const [teki, setTeki] = useState({ name: "super_gorira", hp: 3000 });
+    // ゴリラ
+    const [teki, setTeki] = useState({
+        name: "super_gorira",
+        hp: 3000,
+        turn: true,
+    });
+
+    // ファイター
     const [fighter, setFighter] = useState([
-        { name: "hyper_yellow", hp: 200, mp: 100, attack: -30, heal: +60 },
-        { name: "fire_red", hp: 200, mp: 100, attack: -60, heal: +10 },
-        { name: "speed_blue", hp: 200, mp: 100, attack: -40, heal: +40 },
+        {
+            name: "hyper_yellow",
+            hp: 200,
+            mp: 100,
+            turn: true,
+            attack: -30,
+            heal: +60,
+        },
+        {
+            name: "fire_red",
+            hp: 200,
+            mp: 100,
+            turn: true,
+            attack: -60,
+            heal: +10,
+        },
+        {
+            name: "speed_blue",
+            hp: 200,
+            mp: 100,
+            turn: true,
+            attack: -40,
+            heal: +40,
+        },
     ]);
 
     // ファイターコンポーネント
