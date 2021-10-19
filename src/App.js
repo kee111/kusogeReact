@@ -17,6 +17,7 @@ const functions = {
             return fighter;
         });
     },
+    // ファイターのターンを変更する関数
     change_turn_fighter: (newFigher, fighterName, turn) => {
         return newFigher.map((fighter) => {
             if (fighterName == fighter.name) {
@@ -24,6 +25,14 @@ const functions = {
             }
             return fighter;
         });
+    },
+
+    judge_turn_fighter: (fighterName, fighter) => {
+
+        
+        if (fighterName == fighter.name) {
+            return true;
+        }
     },
 
     // 敵のHPを変更。

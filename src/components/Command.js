@@ -89,8 +89,12 @@ export default function Command_area({
         if (event.key === "Enter") {
             const command = textArea.split(" ");
 
-            // もしアタックコマンドが呼び出されたら
+            // 行動させるファイターのターンを確認
+
+            console.log(functions.judge_turn_fighter(command[0], fighter));
+
             if (command[1] == "attack") {
+                // もしアタックコマンドが呼び出されたら
                 attack_fighter(
                     functions,
                     command,
