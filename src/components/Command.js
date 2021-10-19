@@ -70,14 +70,7 @@ export default function Command_area({
 }) {
     const [textArea, setTextArea] = useState("");
 
-    // // ファイターたちのターン管理 trueで待機状態
-    // const [yellow_turn, setYellow_turn] = useState(fighter[0].turn);
-    // const [red_turn, setRed_turn] = useState(fighter[1].turn);
-    // const [blue_turn, setBlue_turn] = useState(fighter[2].turn);
-
-    // 敵のターン管理 trueで待機状態
-    // const [teki_turn, setTeki_turn] = useState(teki.turn);
-
+  
     // text入力を監視
     function handleChange(e) {
         setTextArea(e.target.value);
