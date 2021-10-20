@@ -29,10 +29,10 @@ const functions = {
 
     // ターンを判定すル関数（途中
     judge_turn_fighter: (fighterName, fighter) => {
-
-
-        if (fighterName == fighter.name) {
-            return true;
+        for (let i=0; i < fighter.length; i++) {
+            if (fighterName == fighter[i].name) {
+                return fighter[i].turn;
+            }
         }
     },
 
