@@ -73,6 +73,25 @@ const fighter_functions = {
     },
 };
 
+// ゴリラ用関数
+const Teki_functions = {
+    // 攻撃
+    attack_teki: (functions, fighter, setFighter, teki) => {
+        const newFighter = Object.assign([], fighter);
+        const choiceFighter = Math.floor(Math.random() * 3);
+        console.log(fighter);
+
+        setFighter(
+            functions.change_Status_fighter(
+                newFighter,
+                fighter[choiceFighter].name,
+                teki.attack,
+                0
+            )
+        );
+    },
+};
+
 // main
 export default function Command_area({
     functions,
@@ -82,7 +101,6 @@ export default function Command_area({
     setTeki,
 }) {
     const [textArea, setTextArea] = useState("");
-    const [setTurn, turn] = useState(true);
 
     // text入力を監視
     function handleChange(e) {
@@ -95,12 +113,9 @@ export default function Command_area({
         if (event.key === "Enter") {
             const command = textArea.split(" ");
 
-            // もし全員のターンが終了したら、全員のターンをリセットさせる
-            if (!fighter[0].turn & !fighter[1].turn & !fighter[2].turn) {
-                fighter.forEach((fighter) => {
-                    fighter.turn = true;
-                });
-            }
+            fighter.forEach((fighter) => {
+                console.log(fighter);
+            });
 
             // 行動させるファイターのターンを確認ここがむずい
             if (functions.judge_turn_fighter(command[0], fighter)) {
@@ -126,6 +141,22 @@ export default function Command_area({
                     );
                 }
                 setTextArea("");
+
+                // もし全員のターンが終了したら、全員のターンをリセットさせ、ゴリラに行動させる。
+                if (!fighter[0].turn & !fighter[1].turn & !fighter[2].turn) {
+                    // ターンリセット
+                    fighter.forEach((fighter) => {
+                        fighter.turn = true;
+                    });
+                    // 敵の攻撃
+                    alert("敵の攻撃");
+                    Teki_functions.attack_teki(
+                        functions,
+                        fighter,
+                        setFighter,
+                        teki
+                    );
+                }
             } else {
                 alert(command[0] + "のターンは終了した");
                 setTextArea("");

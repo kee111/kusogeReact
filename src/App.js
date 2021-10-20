@@ -17,7 +17,7 @@ const functions = {
             return fighter;
         });
     },
-    // ファイターのターンを変更する関数
+    // ファイターのターンを変更(主に終了)させる関数
     change_turn_fighter: (newFigher, fighterName, turn) => {
         return newFigher.map((fighter) => {
             if (fighterName == fighter.name) {
@@ -27,9 +27,9 @@ const functions = {
         });
     },
 
-    // ターンを判定すル関数（途中
+    // ターンを判定する関数
     judge_turn_fighter: (fighterName, fighter) => {
-        for (let i=0; i < fighter.length; i++) {
+        for (let i = 0; i < fighter.length; i++) {
             if (fighterName == fighter[i].name) {
                 return fighter[i].turn;
             }
@@ -48,8 +48,9 @@ function App() {
     // ゴリラ
     const [teki, setTeki] = useState({
         name: "super_gorira",
-        hp: 3000,
+        hp: 2000,
         turn: true,
+        attack: -40,
     });
 
     // ファイター
