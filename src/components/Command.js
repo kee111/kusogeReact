@@ -1,6 +1,6 @@
 import "./command.scss";
 import React, { useState } from "react";
-import { attack_fighter, heal_fighter } from "../functions/figher_func";
+import { attack_fighter, heal_fighter, judge_turn_fighter } from "../functions/figher_func";
 import { attack_teki } from "./Teki";
 
 // main
@@ -29,7 +29,7 @@ export default function Command_area({
             });
 
             // 行動させるファイターのターンを確認ここがむずい
-            if (functions.judge_turn_fighter(command[0], fighter)) {
+            if (judge_turn_fighter(command[0], fighter)) {
                 if (command[1] == "attack") {
                     // もしアタックコマンドが呼び出されたら
                     attack_fighter(

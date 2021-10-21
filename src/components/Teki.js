@@ -1,3 +1,5 @@
+import { change_Status_fighter } from "../functions/figher_func";
+
 export default function Teki({ name, hp }) {
     return (
         <div className={name + "_wrapper"}>
@@ -15,7 +17,7 @@ export const attack_teki = (functions, fighter, setFighter, teki) => {
     const choiceFighter = Math.floor(Math.random() * 3);
 
     setFighter(
-        functions.change_Status_fighter(
+        change_Status_fighter(
             newFighter,
             fighter[choiceFighter].name,
             teki.attack,

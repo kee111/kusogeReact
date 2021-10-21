@@ -1,3 +1,5 @@
+import { change_Status_teki } from "./teki_func";
+
 // ファイターのステータスを変更。第二引数に入ったファイターが変更
 export const change_Status_fighter = (newFigher, fighterName, hp, mp) => {
     return newFigher.map((fighter) => {
@@ -41,11 +43,11 @@ export const attack_fighter = (
     for (let i = 0; i < fighter.length; i++) {
         if (command[0] == fighter[i].name) {
             setTeki(
-                functions.change_Status_teki(newTeki, fighter[i].attack)
+                change_Status_teki(newTeki, fighter[i].attack)
             );
             // 行動したファイターのターンを終了
             setFighter(
-                functions.change_turn_fighter(newFighter, command[0], false)
+                change_turn_fighter(newFighter, command[0], false)
             );
         }
     }
@@ -59,14 +61,14 @@ export const heal_fighter = (functions, command, fighter, setFighter) => {
         if (command[0] == fighter[i].name && command[2] == undefined) {
             // 自分自身を回復
             setFighter(
-                functions.change_Status_fighter(
+                change_Status_fighter(
                     newFighter,
                     command[0],
                     fighter[i].heal,
                     -20
                 ),
                 // 行動したファイターのターンを終了
-                functions.change_turn_fighter(newFighter, command[0], false)
+                change_turn_fighter(newFighter, command[0], false)
             );
 
             // もし、第二引数(指定のファイター)があれば
@@ -76,21 +78,21 @@ export const heal_fighter = (functions, command, fighter, setFighter) => {
         ) {
             // 回復されるファイター
             setFighter(
-                functions.change_Status_fighter(
+                change_Status_fighter(
                     newFighter,
                     command[2],
                     fighter[i].heal,
                     0
                 ),
                 // 回復をしてあげるファイター
-                functions.change_Status_fighter(
+                change_Status_fighter(
                     newFighter,
                     command[0],
                     0,
                     -20
                 ),
                 // 行動したファイターのターンを終了
-                functions.change_turn_fighter(newFighter, command[0], false)
+                change_turn_fighter(newFighter, command[0], false)
             );
         }
     }
