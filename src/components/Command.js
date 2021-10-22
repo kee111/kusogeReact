@@ -1,96 +1,7 @@
 import "./command.scss";
-import React, { useEffect, useState } from "react";
-
-// ファイター用関数
-const fighter_functions = {
-    // ゴリラを攻撃する関数
-    attack_fighter: (
-        functions,
-        command,
-        fighter,
-        setFighter,
-        teki,
-        setTeki
-    ) => {
-        const newTeki = Object.assign([], teki);
-        const newFighter = Object.assign([], fighter);
-        for (let i = 0; i < fighter.length; i++) {
-            if (command[0] == fighter[i].name) {
-                setTeki(
-                    functions.change_Status_teki(newTeki, fighter[i].attack)
-                );
-                // 行動したファイターのターンを終了
-                setFighter(
-                    functions.change_turn_fighter(newFighter, command[0], false)
-                );
-            }
-        }
-    },
-
-    // ファイターを回復する関数
-    heal_fighter: (functions, command, fighter, setFighter) => {
-        const newFighter = Object.assign([], fighter);
-        for (let i = 0; i < fighter.length; i++) {
-            // もし、第二引数(指定のファイター)がなければ
-            if (command[0] == fighter[i].name && command[2] == undefined) {
-                // 自分自身を回復
-                setFighter(
-                    functions.change_Status_fighter(
-                        newFighter,
-                        command[0],
-                        fighter[i].heal,
-                        -20
-                    ),
-                    // 行動したファイターのターンを終了
-                    functions.change_turn_fighter(newFighter, command[0], false)
-                );
-
-                // もし、第二引数(指定のファイター)があれば
-            } else if (
-                command[0] == fighter[i].name &&
-                command[2] != undefined
-            ) {
-                // 回復されるファイター
-                setFighter(
-                    functions.change_Status_fighter(
-                        newFighter,
-                        command[2],
-                        fighter[i].heal,
-                        0
-                    ),
-                    // 回復をしてあげるファイター
-                    functions.change_Status_fighter(
-                        newFighter,
-                        command[0],
-                        0,
-                        -20
-                    ),
-                    // 行動したファイターのターンを終了
-                    functions.change_turn_fighter(newFighter, command[0], false)
-                );
-            }
-        }
-    },
-};
-
-// ゴリラ用関数
-const Teki_functions = {
-    // 攻撃
-    attack_teki: (functions, fighter, setFighter, teki) => {
-        const newFighter = Object.assign([], fighter);
-        const choiceFighter = Math.floor(Math.random() * 3);
-        console.log(fighter);
-
-        setFighter(
-            functions.change_Status_fighter(
-                newFighter,
-                fighter[choiceFighter].name,
-                teki.attack,
-                0
-            )
-        );
-    },
-};
+import React, { useState } from "react";
+import { attack_fighter, heal_fighter, judge_turn_fighter } from "../functions/figher_func";
+import { attack_teki } from "./Teki";
 
 // main
 export default function Command_area({
@@ -118,10 +29,10 @@ export default function Command_area({
             });
 
             // 行動させるファイターのターンを確認ここがむずい
-            if (functions.judge_turn_fighter(command[0], fighter)) {
+            if (judge_turn_fighter(command[0], fighter)) {
                 if (command[1] == "attack") {
                     // もしアタックコマンドが呼び出されたら
-                    fighter_functions.attack_fighter(
+                    attack_fighter(
                         functions,
                         command,
                         fighter,
@@ -133,7 +44,7 @@ export default function Command_area({
 
                 // もし、ヒールが呼び出されたら
                 if (command[1] == "heal") {
-                    fighter_functions.heal_fighter(
+                    heal_fighter(
                         functions,
                         command,
                         fighter,
@@ -150,7 +61,7 @@ export default function Command_area({
                     });
                     // 敵の攻撃
                     alert("敵の攻撃");
-                    Teki_functions.attack_teki(
+                    attack_teki(
                         functions,
                         fighter,
                         setFighter,
