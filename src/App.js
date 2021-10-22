@@ -23,35 +23,35 @@ function App() {
     // ゴリラ
     const [teki, setTeki] = useState({
         name: "super_gorira",
-        hp: 2000,
+        hp: 1000,
         turn: true,
-        attack: -40,
+        attack: -60,
     });
 
     // ファイター
     const [fighter, setFighter] = useState([
         {
-            name: "hyper_yellow",
+            name: "yellow",
             hp: 200,
             mp: 100,
             turn: true,
-            attack: -30,
+            attack: -200,
             heal: +60,
         },
         {
-            name: "fire_red",
+            name: "red",
             hp: 200,
             mp: 100,
             turn: true,
-            attack: -60,
-            heal: +10,
+            attack: -300,
+            heal: +30,
         },
         {
-            name: "speed_blue",
+            name: "blue",
             hp: 200,
             mp: 100,
             turn: true,
-            attack: -40,
+            attack: -250,
             heal: +40,
         },
     ]);

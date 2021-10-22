@@ -1,6 +1,10 @@
 import "./command.scss";
 import React, { useState } from "react";
-import { attack_fighter, heal_fighter, judge_turn_fighter } from "../functions/figher_func";
+import {
+    attack_fighter,
+    heal_fighter,
+    judge_turn_fighter,
+} from "../functions/figher_func";
 import { attack_teki } from "./Teki";
 
 // main
@@ -44,12 +48,7 @@ export default function Command_area({
 
                 // もし、ヒールが呼び出されたら
                 if (command[1] == "heal") {
-                    heal_fighter(
-                        functions,
-                        command,
-                        fighter,
-                        setFighter
-                    );
+                    heal_fighter(functions, command, fighter, setFighter);
                 }
                 setTextArea("");
 
@@ -61,16 +60,19 @@ export default function Command_area({
                     });
                     // 敵の攻撃
                     alert("敵の攻撃");
-                    attack_teki(
-                        functions,
-                        fighter,
-                        setFighter,
-                        teki
-                    );
+                    attack_teki(functions, fighter, setFighter, teki);
                 }
             } else {
                 alert(command[0] + "のターンは終了した");
                 setTextArea("");
+            }
+            fighter.forEach((fighter) => {
+                if (fighter.hp <= 0) {
+                    alert(fighter.name + "が死にました。");
+                }
+            });
+            if (teki.hp <= 0) {
+                alert(teki.name + "が死にました");
             }
         }
     };
