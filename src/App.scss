@@ -1,7 +1,14 @@
 .teki_area {
     height: 300px;
     // background-color: rgb(77, 70, 222);
-    background-image: linear-gradient(to right top, #071933, #00265a, #0e3182, #3539a9, #613bcd);
+    background-image: linear-gradient(
+        to right top,
+        #071933,
+        #00265a,
+        #0e3182,
+        #3539a9,
+        #613bcd
+    );
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,7 +34,14 @@
 .mikata_area {
     height: 300px;
     // background-color: rgb(74, 152, 70);
-    background-image: linear-gradient(to left bottom, #015719, #106c25, #1e8131, #2c973d, #39ae4a);
+    background-image: linear-gradient(
+        to left bottom,
+        #015719,
+        #106c25,
+        #1e8131,
+        #2c973d,
+        #39ae4a
+    );
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -89,5 +103,3 @@
         }
     }
 }
-
-

@@ -58,9 +58,11 @@ export default function Command_area({
                     fighter.forEach((fighter) => {
                         fighter.turn = true;
                     });
-                    // 敵の攻撃
-                    alert("敵の攻撃");
-                    attack_teki(functions, fighter, setFighter, teki);
+                    setTimeout(function () {
+                        // 敵の攻撃
+                        alert("敵の攻撃");
+                        attack_teki(functions, fighter, setFighter, teki);
+                    }, 2000);
                 }
             } else {
                 alert(command[0] + "のターンは終了した");
