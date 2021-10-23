@@ -34,6 +34,7 @@ export default function Command_area({
 
             // 行動させるファイターのターンを確認ここがむずい
             if (judge_turn_fighter(command[0], fighter)) {
+                alert(command[0]+"の"+command[1]+"発動")
                 if (command[1] == "attack") {
                     // もしアタックコマンドが呼び出されたら
                     attack_fighter(
