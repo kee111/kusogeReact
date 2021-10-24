@@ -1,7 +1,8 @@
 import "./command.scss";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     attack_fighter,
+    check_fighter,
     heal_fighter,
     judge_turn_fighter,
 } from "../functions/figher_func";
@@ -21,6 +22,15 @@ export default function Command_area({
     function handleChange(e) {
         setTextArea(e.target.value);
     }
+
+    // fighter死んだら
+    // useEffect(() => {
+    //     fighter.forEach((fighter) => {
+    //         if (fighter.life == false) {
+    //             alert(fighter.name + "がしんだ");
+    //         }
+    //     });
+    // }, [fighter[0].life,fighter[1].life,fighter[2].life]);
 
     // コマンド打ち込んだ時の処理
     const handleKeyDown = (event) => {
@@ -63,17 +73,18 @@ export default function Command_area({
                         // 敵の攻撃
                         alert("敵の攻撃");
                         attack_teki(functions, fighter, setFighter, teki);
+                        setFighter(check_fighter(fighter));
                     }, 2000);
                 }
             } else {
                 alert(command[0] + "のターンは終了した");
                 setTextArea("");
             }
-            fighter.forEach((fighter) => {
-                if (fighter.hp <= 0) {
-                    alert(fighter.name + "が死にました。");
-                }
-            });
+
+            // ファイターが死んだら
+            
+
+            // 敵が死んだら
             if (teki.hp <= 0) {
                 alert(teki.name + "が死にました");
             }

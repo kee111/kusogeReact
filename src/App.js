@@ -25,7 +25,7 @@ function App() {
         name: "super_gorira",
         hp: 1000,
         turn: true,
-        attack: -60,
+        attack: -6000,
     });
 
     // ファイター
@@ -37,6 +37,7 @@ function App() {
             turn: true,
             attack: -200,
             heal: +60,
+            life: true,
         },
         {
             name: "red",
@@ -45,6 +46,7 @@ function App() {
             turn: true,
             attack: -300,
             heal: +30,
+            life: true,
         },
         {
             name: "blue",
@@ -53,6 +55,7 @@ function App() {
             turn: true,
             attack: -250,
             heal: +40,
+            life: true,
         },
     ]);
     // JSX
