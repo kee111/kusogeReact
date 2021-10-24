@@ -97,3 +97,13 @@ export const heal_fighter = (functions, command, fighter, setFighter) => {
         }
     }
 }
+
+// 死んだファイターを処理する関数
+// export const dessFighter = (fighter,setFighter) => {
+//     fighter.forEach((fighter) => {
+//         if (fighter.hp <= 0) {
+//             const newFighter = Object.assign([], fighter);
+//             alert(fighter.name + "が死にました。");
+        // }
+//     });
+// };

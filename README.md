@@ -1,3 +1,7 @@
+url  
+https://command-fighter-klegg995a-kee.vercel.app/
+
+
 # 課題
 
 - コマンド欄にログを実装
