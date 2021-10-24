@@ -69,41 +69,32 @@ export const heal_fighter = (functions, command, fighter, setFighter) => {
 
             // もし、第二引数(指定のファイター)があれば
         } else if (command[0] == fighter[i].name && command[2] != undefined) {
-            fighter.forEach((fighter) => {
-                if (command[2] == fighter.name) {
-                    // もしファイターが死んでいたら
-                    if (fighter.life == false) {
-                        alert(fighter.name + "は死んでいるので回復できない！");
+            for (let i = 0; i < fighter.length; i++) {
+                if(fighter[i].name==command[2]){
+                    if(fighter[i].life==false){
+                        alert(fighter[i].name+"は死んでいるので回復できない！");
                         return;
-                        
-                        // 生きていたら
-                    } else {
-                        // 回復されるファイター
-                        setFighter(
-                            change_Status_fighter(
-                                newFighter,
-                                command[2],
-                                fighter[i].heal,
-                                0
-                            ),
-                            // 回復をしてあげるファイター
-                            change_Status_fighter(
-                                newFighter,
-                                command[0],
-                                0,
-                                -20
-                            ),
-                            // 行動したファイターのターンを終了
-                            change_turn_fighter(newFighter, command[0], false)
-                        );
                     }
                 }
-            });
+            }
+            // 回復されるファイター
+            setFighter(
+                change_Status_fighter(
+                    newFighter,
+                    command[2],
+                    fighter[i].heal,
+                    0
+                ),
+                // 回復をしてもらうファイター
+                change_Status_fighter(newFighter, command[0], 0, -20),
+                // 行動したファイターのターンを終了
+                change_turn_fighter(newFighter, command[0], false)
+            );
         }
     }
 };
 
-// ファイターのhpを確認する関数(テスト中)
+// 死んだファイターを管理する関数
 export const check_fighter = (fighter) => {
     const checked_fighter = Object.assign([], fighter);
     return checked_fighter.map((fighter) => {

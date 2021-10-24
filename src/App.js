@@ -25,7 +25,7 @@ function App() {
         name: "super_gorira",
         hp: 1000,
         turn: true,
-        attack: -6000,
+        attack: -1500,
     });
 
     // ファイター
@@ -35,7 +35,7 @@ function App() {
             hp: 200,
             mp: 100,
             turn: true,
-            attack: -200,
+            attack: -60,
             heal: +60,
             life: true,
         },
@@ -44,7 +44,7 @@ function App() {
             hp: 200,
             mp: 100,
             turn: true,
-            attack: -300,
+            attack: -100,
             heal: +30,
             life: true,
         },
@@ -53,7 +53,7 @@ function App() {
             hp: 200,
             mp: 100,
             turn: true,
-            attack: -250,
+            attack: -80,
             heal: +40,
             life: true,
         },
