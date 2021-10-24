@@ -22,6 +22,7 @@ export default function Command_area({
     // text入力を監視
     function handleChange(e) {
         setTextArea(e.target.value);
+        // 死んだファイターの行動を制限
         limit_fighter(fighter,e.target.value,setTextArea);
     }
 
@@ -74,9 +75,6 @@ export default function Command_area({
                 alert(command[0] + "のターンは終了した");
                 setTextArea("");
             }
-
-            // ファイターが死んだら
-
             // 敵が死んだら
             if (teki.hp <= 0) {
                 alert(teki.name + "が死にました");

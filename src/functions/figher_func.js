@@ -69,19 +69,36 @@ export const heal_fighter = (functions, command, fighter, setFighter) => {
 
             // もし、第二引数(指定のファイター)があれば
         } else if (command[0] == fighter[i].name && command[2] != undefined) {
-            // 回復されるファイター
-            setFighter(
-                change_Status_fighter(
-                    newFighter,
-                    command[2],
-                    fighter[i].heal,
-                    0
-                ),
-                // 回復をしてあげるファイター
-                change_Status_fighter(newFighter, command[0], 0, -20),
-                // 行動したファイターのターンを終了
-                change_turn_fighter(newFighter, command[0], false)
-            );
+            fighter.forEach((fighter) => {
+                if (command[2] == fighter.name) {
+                    // もしファイターが死んでいたら
+                    if (fighter.life == false) {
+                        alert(fighter.name + "は死んでいるので回復できない！");
+                        return;
+                        
+                        // 生きていたら
+                    } else {
+                        // 回復されるファイター
+                        setFighter(
+                            change_Status_fighter(
+                                newFighter,
+                                command[2],
+                                fighter[i].heal,
+                                0
+                            ),
+                            // 回復をしてあげるファイター
+                            change_Status_fighter(
+                                newFighter,
+                                command[0],
+                                0,
+                                -20
+                            ),
+                            // 行動したファイターのターンを終了
+                            change_turn_fighter(newFighter, command[0], false)
+                        );
+                    }
+                }
+            });
         }
     }
 };
@@ -93,6 +110,7 @@ export const check_fighter = (fighter) => {
         // もしファイターが死んだら
         if (fighter.hp <= 0) {
             fighter.hp = 0;
+            fighter.turn = false;
             fighter.life = false;
             setTimeout(() => {
                 alert(fighter.name + "がしんだ");
@@ -107,7 +125,7 @@ export const limit_fighter = (fighter, fighterName, setTextArea) => {
     fighter.forEach((fighter) => {
         if (fighter.name == fighterName) {
             if (fighter.life == false) {
-                alert(fighter.name+"は死んでいる");
+                alert(fighter.name + "は死んでいる");
                 return setTextArea("");
             }
         }

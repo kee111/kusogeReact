@@ -14,7 +14,19 @@ export default function Teki({ name, hp }) {
 // 攻撃
 export const attack_teki = (functions, fighter, setFighter, teki) => {
     const newFighter = Object.assign([], fighter);
-    const choiceFighter = Math.floor(Math.random() * 3);
+    let choiceFighter = 0;
+
+    // 生きてるファイターが選ばれるまでループする関数
+    const shuffle_choice = () => {
+        choiceFighter = Math.floor(Math.random() * 3);
+        while (true) {
+            if (fighter[choiceFighter].life == false) {
+                shuffle_choice();
+            } else return;
+        }
+    };
+
+    shuffle_choice();
 
     setFighter(
         change_Status_fighter(
@@ -24,4 +36,4 @@ export const attack_teki = (functions, fighter, setFighter, teki) => {
             0
         )
     );
-}
+};
