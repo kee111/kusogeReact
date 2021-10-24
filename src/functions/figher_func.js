@@ -94,7 +94,22 @@ export const check_fighter = (fighter) => {
         if (fighter.hp <= 0) {
             fighter.hp = 0;
             fighter.life = false;
+            setTimeout(() => {
+                alert(fighter.name + "がしんだ");
+            }, 1000);
         }
         return fighter;
+    });
+};
+
+// 死んだファイターの行動を制限する関数
+export const limit_fighter = (fighter, fighterName, setTextArea) => {
+    fighter.forEach((fighter) => {
+        if (fighter.name == fighterName) {
+            if (fighter.life == false) {
+                alert(fighter.name+"は死んでいる");
+                return setTextArea("");
+            }
+        }
     });
 };
