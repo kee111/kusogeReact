@@ -6,17 +6,21 @@ import Header from "./components/Header";
 import Command from "./components/Command";
 
 // ファイターコンポーネント
-const fighter_list = (fighter) => fighter.map((fighter, index) => (
-    <Fighter
-        key={index}
-        name={fighter.name}
-        hp={fighter.hp}
-        mp={fighter.mp}
-    />
-));
+const fighter_list = (fighter) =>
+    fighter.map((fighter, index) => (
+        <Fighter
+            key={index}
+            name={fighter.name}
+            hp={fighter.hp}
+            mp={fighter.mp}
+            life={fighter.life ? "" : "死に"}
+        />
+    ));
 
 // 敵ゴリラコンポーネント
-const teki_list = (teki) => <Teki key={"teki-0"} name={teki.name} hp={teki.hp} />;
+const teki_list = (teki) => (
+    <Teki key={"teki-0"} name={teki.name} hp={teki.hp} />
+);
 
 // main
 function App() {

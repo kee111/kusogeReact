@@ -33,10 +33,6 @@ export default function Command_area({
         if (event.key === "Enter") {
             const command = textArea.split(" ");
 
-            fighter.forEach((fighter) => {
-                console.log(fighter);
-            });
-
             // 行動させるファイターのターンを確認ここがむずい
             if (judge_turn_fighter(command[0], fighter)) {
                 alert(command[0] + "の" + command[1] + "発動");
